@@ -1,0 +1,105 @@
+#dati del terzo anno
+
+#popolamento degli insiemi
+set varietà := LIN CARR BARZAN FELTRIN;
+set terreni := A B C D;
+set dipendenti := DIP1 DIP2 DIP3 DIP4 DIP5;
+
+#valori dei parametri
+
+#resa per ogni di varietà di semente
+param resa := LIN
+			  CARR
+			  BARZAN
+			  FELTRIN
+			  ;
+				
+#densità ottimale per ogni varietà di semi per mq
+param densità := LIN
+			  	 CARR
+			  	 BARZAN
+			  	 FELTRIN
+			  	 ;
+
+#prezzo di vendita in €/Kg per ogni varietà di radicchio
+param prezzo := LIN
+			  	CARR
+			  	BARZAN
+			  	FELTRIN
+			  	;
+
+#costo in €/Kg per ogni varietà di semi acquistati
+param costo := LIN
+			   CARR
+			   BARZAN
+			   FELTRIN
+			   ;
+
+#disponibilità massima di semi per ogni varietà
+param disponibilità := LIN
+			  		   CARR
+			  		   BARZAN
+			  		   FELTRIN
+			  		   ;
+
+#dimensione in mq per ogni appezzamento di terreno
+param dimensione := A
+					B
+					C
+					D
+					;
+
+#incremento in % dato dall'utilizzo di fertilizzante per ogni varietà
+param incremento := LIN
+			  		CARR
+			  		BARZAN
+			  		FELTRIN
+			  		;
+			  		
+#ore annue per ogni dipendente
+param ore_dipendente := DIP1 2000
+						DIP2 2000
+						DIP3 2000
+						DIP4 2000
+						DIP5 2000
+						;
+
+#richiesta minima di radicchio per ogni varietà
+param richiesta := LIN
+			  	   CARR
+			  	   BARZAN
+			  	   FELTRIN
+			  	   ;
+
+#canone per l'utilizzo dell'acqua
+param canone_acqua := ;
+
+#canone per l'utilizzo del gasolio
+param canone_gasolio := ;
+
+#ore massime previste per la quantità di gasolio fornito
+param ore_max_gasolio := ;
+
+#canone per l'utilizzo di gasolio extra
+param canone_gasolio_extra := ;
+
+#canone per la manutenzione dei macchinari
+param canone_manutenzione := ;
+
+#ore massime previste per rientrare nella manutenzione ordinaria
+param ore_max_manutenzione := ;
+
+#canone per la manutenzione extra dei macchinari
+param canone_manutenzione_extra := ;
+
+#costo del fertilizzante
+param costo_fertilizzante := ;
+
+#salario annuo uguale per ogni dipendente compreso di tassazione
+param salario_dipendente := ;
+
+#costo straordinaro per ogni dipendente
+param straordinario_dipendente := ;
+
+#ore straordinario uguali per ogni dipendente
+param ore_straordinario_dipendente := ;

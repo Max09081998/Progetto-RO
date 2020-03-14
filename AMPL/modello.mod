@@ -27,8 +27,8 @@ param dimensione{terreni};
 #incremento in % dato dall'utilizzo di fertilizzante per ogni varietà
 param incremento{varietà};
 
-#ore lavorative per ogni dipendente
-param ore_lavorative{dipendenti};
+#ore annue per ogni dipendente
+param ore_dipendente{dipedenti};
 
 #richiesta minima di radicchio per ogni varietà
 param richiesta{varietà};
@@ -59,9 +59,6 @@ param costo_fertilizzante > 0;
 
 #salario annuo uguale per ogni dipendente compreso di tassazione
 param salario_dipendente > 0;
-
-#ore annue uguali per ogni dipendente
-param ore_dipendente > 0 integer;
 
 #costo straordinaro per ogni dipendente
 param straordinario_dipendente > 0;
@@ -124,14 +121,14 @@ s.t. vincolo_limiti_semina{i in varietà, j in terreni}: y["LIN",j] + y["FELTRIN"
 #attivazione della variabile y
 s.t. vincolo_attivazione_y{i in varietà. j in terreni}: x[i,j] <= M * y[i,j];
 
-#numero massimo di semi per ogni campo per ogni varietà
+#numero massimo di semi per ogni campo per ogni varietà??
 s.t. vincolo_massimo_semi{i in varietà, j in terreni}: x[i,j] <= densità[i] * dimensione[j];
 
 #utilizzo del fertilizzante
 s.t. vincolo_fertilizzante: sum{i in varietà}: z[i] <= 1;
 
 #numero massimo delle ore totali dei dipendenti
-s.t. vincolo_massimo_ore_dipendenti: sum{i in varietà, j in terreni} x[i,j] <= sum{k in dipendenti} (ore_dipendente + ore_straordinario_dipendente*w[k]);
+s.t. vincolo_massimo_ore_dipendenti: sum{i in varietà, j in terreni} x[i,j] <= sum{k in dipendenti} (ore_dipendente[k] + ore_straordinario_dipendente * w[k]);
 
 #numero massimo di dipendenti che possono fare gli straordinari
 s.t. vincolo_massimo_straordinari: sum{i in dipendenti} w[i] <= 4;
