@@ -1,0 +1,105 @@
+#dati del primo anno
+
+#popolamento degli insiemi
+set varietà := LIN CARR BARZAN FELTRIN;
+set terreni := A B C D;
+set dipendenti := DIP1 DIP2 DIP3 DIP4 DIP5;
+
+#valori dei parametri
+
+#resa per ogni di varietà di semente
+param resa := LIN 10
+			  CARR 15
+			  BARZAN 13
+			  FELTRIN 18
+			  ;
+				
+#densità ottimale per ogni varietà di semi per mq
+param densità := LIN 1
+			  	 CARR 1.2
+			  	 BARZAN 1.1
+			  	 FELTRIN 1.4
+			  	 ;
+
+#prezzo di vendita in €/Kg per ogni varietà di radicchio
+param prezzo := LIN 5
+			  	CARR 5.5
+			  	BARZAN 5.5
+			  	FELTRIN 6
+			  	;
+
+#costo in €/Kg per ogni varietà di semi acquistati
+param costo := LIN 0.1
+			   CARR 0.12
+			   BARZAN 0.14
+			   FELTRIN 0.2
+			   ;
+
+#disponibilità massima di semi per ogni varietà
+param disponibilità := LIN
+			  		   CARR
+			  		   BARZAN
+			  		   FELTRIN
+			  		   ;
+
+#dimensione in mq per ogni appezzamento di terreno
+param dimensione := A 300
+					B 400
+					C 500
+					D 350
+					;
+
+#incremento in % dato dall'utilizzo di fertilizzante per ogni varietà
+param incremento := LIN 0.1
+			  		CARR 0.12
+			  		BARZAN 0.08
+			  		FELTRIN 0.11
+			  		;
+			  		
+#ore annue per ogni dipendente
+param ore_dipendente := DIP1 2000
+						DIP2 2000
+						DIP3 2000
+						DIP4 2000
+						DIP5 2000
+						;
+
+#richiesta minima di radicchio per ogni varietà
+param richiesta := LIN 500
+			  	   CARR 700
+			  	   BARZAN 400
+			  	   FELTRIN 1000
+			  	   ;
+
+#canone per l'utilizzo dell'acqua
+param canone_acqua := 500;
+
+#canone per l'utilizzo del gasolio
+param canone_gasolio := 1000;
+
+#ore massime previste per la quantità di gasolio fornito
+param ore_max_gasolio := 9500;
+
+#canone per l'utilizzo di gasolio extra
+param canone_gasolio_extra := 3000;
+
+#canone per la manutenzione dei macchinari
+param canone_manutenzione := 2000;
+
+#ore massime previste per rientrare nella manutenzione ordinaria
+param ore_max_manutenzione := 8500;
+
+#canone per la manutenzione extra dei macchinari
+param canone_manutenzione_extra := 500;
+
+#costo del fertilizzante
+param costo_fertilizzante := 100;
+
+#salario annuo uguale per ogni dipendente compreso di tassazione
+param salario_dipendente := 20000;
+
+#costo straordinaro per ogni dipendente
+param straordinario_dipendente := 1000;
+
+#ore straordinario uguali per ogni dipendente
+param ore_straordinario_dipendente := 30;
