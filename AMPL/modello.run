@@ -17,28 +17,28 @@ solve;
 
 #visualizzazione risultati
 
-display 'profitto massimo finale';
+# display 'profitto massimo finale';
 display profitto_finale;
 
-display 'quantità id radicchio prodotta per ogni varietà'
-display {i in varietà}: (resa[i] + resa[i] * incremento[i] * z[i]) * sum{j in terreni} x[i,j];
+# display 'quantità id radicchio prodotta per ogni varietà';
+display {i in varietà} : ((resa[i] + resa[i] * incremento[i] * z[i]) * (sum{j in terreni} x[i,j]));
 
-display 'quantità di semi in Kg per ogni varietà seminati in ogni terreno';
+# display 'quantità di semi in Kg per ogni varietà seminati in ogni terreno';
 display x;
 
 #numero massimo di semi per ogni campo per ogni varietà?? CAPIRE SE VA MESSO
 
-display '1 sse la varietà viene seminata in un determinato terreno';
+# display '1 sse la varietà viene seminata in un determinato terreno';
 display y;
 
-display '1 sse uso il fertilizzante sulla varietà';
+# display '1 sse uso il fertilizzante sulla varietà';
 display z;
 
-display 'numero di dipendenti che fanno gli straordinari'
+# display 'numero di dipendenti che fanno gli straordinari';
 display : sum{i in dipendenti} w[i];
 
-display '1 sse acquisto gasolio agricolo extra';
+# display '1 sse acquisto gasolio agricolo extra';
 display u;
 
-display '#1 sse ho costo per eventuale manutenzione extra
+# display '#1 sse ho costo per eventuale manutenzione extra';
 display v;
