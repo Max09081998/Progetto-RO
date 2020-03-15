@@ -7,64 +7,64 @@ set dipendenti;
 #dichiarazione dei parametri
 
 #resa per ogni di varietà di semente
-param resa{varietà};
+param resa{varietà} >= 0;
 
 #densità ottimale per ogni varietà di semi per mq
-param densità{varietà};
+param densità{varietà} >= 0;
 
 #prezzo di vendita in €/Kg per ogni varietà di radicchio
-param prezzo{varietà};
+param prezzo{varietà} >= 0;
 
 #costo in €/Kg per ogni varietà di semi acquistati
-param costo{varietà};
+param costo{varietà} >= 0;
 
 #disponibilità massima di semi per ogni varietà
-param disponibilità{varietà};
+param disponibilità{varietà} >= 0;
 
 #dimensione in mq per ogni appezzamento di terreno
-param dimensione{terreni};
+param dimensione{terreni} >= 0;
 
-#incremento in % dato dall'utilizzo di fertilizzante per ogni varietà
-param incremento{varietà};
+#incremento in % fornito dall'utilizzo di fertilizzante per ogni varietà
+param incremento{varietà} >= 0;
 
 #ore annue per ogni dipendente
-param ore_dipendente{dipedenti};
+param ore_dipendente{dipendenti} >= 0 integer;
 
 #richiesta minima di radicchio per ogni varietà
-param richiesta{varietà};
+param richiesta{varietà} >= 0;
 
-#canone per l'utilizzo dell'acqua
-param canone_acqua > 0;
+#canone annuo per l'utilizzo dell'acqua
+param canone_acqua >= 0;
 
-#canone per l'utilizzo del gasolio
-param canone_gasolio > 0;
+#canone annuo base per l'utilizzo del gasolio
+param canone_gasolio >= 0;
 
 #ore massime previste per la quantità di gasolio fornito
-param ore_max_gasolio > 0 integer;
+param ore_max_gasolio >= 0 integer;
 
-#canone per l'utilizzo di gasolio extra
-param canone_gasolio_extra > 0;
+#canone annuo per l'utilizzo di gasolio extra
+param canone_gasolio_extra >= 0;
 
-#canone per la manutenzione dei macchinari
-param canone_manutenzione > 0;
+#canone annuo per la manutenzione dei macchinari
+param canone_manutenzione >= 0;
 
 #ore massime previste per rientrare nella manutenzione ordinaria
-param ore_max_manutenzione > 0 integer;
+param ore_max_manutenzione >= 0 integer;
 
-#canone per la manutenzione extra dei macchinari
-param canone_manutenzione_extra > 0;
+#canone annuo per la manutenzione extra dei macchinari
+param canone_manutenzione_extra >= 0;
 
 #costo del fertilizzante
-param costo_fertilizzante > 0;
+param costo_fertilizzante >= 0;
 
 #salario annuo uguale per ogni dipendente compreso di tassazione
-param salario_dipendente > 0;
+param salario_dipendente >= 0;
 
 #costo straordinaro per ogni dipendente
-param straordinario_dipendente > 0;
+param straordinario_dipendente >= 0;
 
 #ore straordinario uguali per ogni dipendente
-param ore_straordinario_dipendente > 0 integer;
+param ore_straordinario_dipendente >= 0 integer;
 
 #big M
 param M = 1000000;
@@ -73,7 +73,7 @@ param M = 1000000;
 #dichiarazione delle variabili
 
 #quantità di semi per ogni varietà seminati in ogni terreno
-var x{varietà, terreni} integer >= 0;
+var x{varietà, terreni} >= 0 integer;
 
 #1 sse la varietà viene seminata in un determinato terreno
 var y{varietà, terreni} binary;
@@ -95,19 +95,19 @@ var v binary;
 #funzione obiettivo
 
 maximize profitto_finale :
-#ricavi dalla vendita
+#ricavi dalla vendita del radicchio
 (sum{i in varietà, j in terreni} x[i,j] * prezzo[i] * (resa[i] + incremento[i] * resa[i] * z[i]))
-(sum{i in varietà} (sum{j in terreni} x[i,j]) * prezzo[i] * (resa[i] + incremento[i] * resa[i] * z[i]))
+#(sum{i in varietà} (sum{j in terreni} x[i,j]) * prezzo[i] * (resa[i] + incremento[i] * resa[i] * z[i]))
 
 
 
--(sum{i in varietà} costo[i] * (sum{j in terreni} x[i,j])) #costo delle sementi
+-(sum{i in varietà, j in terreni} costo[i] * x[i,j]) #costo delle sementi
 -(sum{i in varietà} costo_fertilizzante * z[i]) #costo per il fertilizzante
 -(sum{i in dipendenti} salario_dipendente) #costo del salario dei dipendenti compreso di tassazione
 -(sum{i in dipendenti} straordinario_dipendente* w[i]) #costo degli straordinari dei dipendenti
--(canone_gasolio + canone_gasolio_extra * u) #costo del gasolio
-- canone_acqua
--(canone_manutenzione + canone_manutenzione_extra * v); #costo di manutenzione dei mezzi
+-(canone_gasolio + canone_gasolio_extra * u) #costo per il gasolio agricolo
+- canone_acqua #canone per l'acqua
+-(canone_manutenzione + canone_manutenzione_extra * v); #costo di manutenzione dei macchiari
 
 
 #vincoli
@@ -115,17 +115,17 @@ maximize profitto_finale :
 #disponibilità massima di semi per ogni varietà
 s.t. vincolo_disponibilità_max{i in varietà}: sum{j in terreni} x[i,j] <= disponibilità[i];
 
-#non posso seminare sia la varietà LIN che la varietà 
+#non posso seminare sia la varietà LIN che la varietà FELTRIN
 s.t. vincolo_limiti_semina{i in varietà, j in terreni}: y["LIN",j] + y["FELTRIN",j] <= 1;
 
 #attivazione della variabile y
-s.t. vincolo_attivazione_y{i in varietà. j in terreni}: x[i,j] <= M * y[i,j];
+s.t. vincolo_attivazione_y{i in varietà, j in terreni}: x[i,j] <= M * y[i,j];
 
-#numero massimo di semi per ogni campo per ogni varietà??
+#numero massimo di semi per ogni terreno per ogni varietà??
 s.t. vincolo_massimo_semi{i in varietà, j in terreni}: x[i,j] <= densità[i] * dimensione[j];
 
 #utilizzo del fertilizzante
-s.t. vincolo_fertilizzante: sum{i in varietà}: z[i] <= 1;
+s.t. vincolo_fertilizzante: sum{i in varietà} z[i] <= 1;
 
 #numero massimo delle ore totali dei dipendenti
 s.t. vincolo_massimo_ore_dipendenti: sum{i in varietà, j in terreni} x[i,j] <= sum{k in dipendenti} (ore_dipendente[k] + ore_straordinario_dipendente * w[k]);

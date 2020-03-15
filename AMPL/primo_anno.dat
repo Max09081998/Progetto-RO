@@ -36,10 +36,10 @@ param costo := LIN 0.1
 			   ;
 
 #disponibilità massima di semi per ogni varietà
-param disponibilità := LIN
-			  		   CARR
-			  		   BARZAN
-			  		   FELTRIN
+param disponibilità := LIN 2000
+			  		   CARR 2000
+			  		   BARZAN 1900
+			  		   FELTRIN 1500
 			  		   ;
 
 #dimensione in mq per ogni appezzamento di terreno
