@@ -22,41 +22,34 @@ param densità := LIN 1
 			  	 ;
 
 #prezzo di vendita in €/Kg per ogni varietà di radicchio
-param prezzo := LIN 5
-			  	CARR 5.5
-			  	BARZAN 5.5
-			  	FELTRIN 6
-			  	;
+param prezzo_vendita := LIN 5
+			  			CARR 5.5
+			  			BARZAN 5.5
+			  			FELTRIN 6
+			  			;
 
 #costo in €/Kg per ogni varietà di semi acquistati
-param costo := LIN 0.1
-			   CARR 0.12
-			   BARZAN 0.14
-			   FELTRIN 0.2
-			   ;
+param costo_semi := LIN 0.1
+			   		CARR 0.12
+			  		BARZAN 0.14
+			  		FELTRIN 0.2
+			   		;
 
 #disponibilità massima di semi per ogni varietà
-param disponibilità := LIN 1000
-			  		   CARR 1000
-			  		   BARZAN 1100
-			  		   FELTRIN 900
-			  		   ;
+param disponibilità_semi := LIN 1000
+			  		   		CARR 1000
+			  		  		BARZAN 1100
+			  		   		FELTRIN 900
+			  		   		;
 
 #dimensione in mq per ogni appezzamento di terreno
-param dimensione := A 500
-					B 400
-					C 350
-					D 300
-					;
-
-#incremento in % dato dall'utilizzo di fertilizzante per ogni varietà
-param incremento := LIN 0.1
-			  		CARR 0.12
-			  		BARZAN 0.08
-			  		FELTRIN 0.11
-			  		;
+param dimensione_terreni := A 500
+							B 400
+							C 350
+							D 300
+							;
 			  	
-#TO FIX	
+#ore necessarie a partire dal seme per avere il prodotto finito, per ogni varietà
 param ore_varietà := LIN 3
 			  		 CARR 4
 			  		 BARZAN 5
@@ -77,6 +70,9 @@ param richiesta := LIN 2000
 			  	   BARZAN 2000
 			  	   FELTRIN 2000
 			  	   ;
+
+#salario in €/h uguale per ogni dipendente compreso di tassazione
+param salario_dipendente := 5;
 
 #canone per l'utilizzo dell'acqua
 param canone_acqua := 500;
@@ -99,14 +95,5 @@ param ore_max_manutenzione := 8500;
 #canone per la manutenzione extra dei macchinari
 param canone_manutenzione_extra := 500;
 
-#costo del fertilizzante
-param costo_fertilizzante := 100;
-
-#salario orario uguale per ogni dipendente compreso di tassazione #TO FIX
-param salario_dipendente := 5;
-
-#costo straordinaro per ogni dipendente
-param straordinario_dipendente := 1000;
-
-#ore straordinario uguali per ogni dipendente
-param ore_straordinario_dipendente := 30;
+#costo fisso per l'utilizzo di prodotti chimici
+param costo_prodotti_chimici := 100;
