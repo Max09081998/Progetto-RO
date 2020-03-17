@@ -11,7 +11,7 @@ set dipendenti := DIP1 DIP2 DIP3 DIP4 DIP5;
 param resa := LIN 10
 			  CARR 12
 			  BARZAN 13
-			  FELTRIN 15
+			  FELTRIN 17
 			  ;
 				
 #densità ottimale per ogni varietà di semi per mq
@@ -45,8 +45,8 @@ param disponibilità_semi := LIN 1000
 #dimensione in mq per ogni appezzamento di terreno
 param dimensione_terreni := A 500
 							B 400
-							C 350
-							D 300
+							C 550
+							D 500
 							;
 			  	
 #ore necessarie a partire dal seme per avere il prodotto finito, per ogni varietà
@@ -65,10 +65,10 @@ param ore_dipendente := DIP1 2000
 						;
 
 #richiesta minima di radicchio per ogni varietà
-param richiesta := LIN 2000
-			  	   CARR 2000
-			  	   BARZAN 2000
-			  	   FELTRIN 2000
+param richiesta := LIN 1000
+			  	   CARR 1000
+			  	   BARZAN 1000
+			  	   FELTRIN 1000
 			  	   ;
 
 #salario in €/h uguale per ogni dipendente compreso di tassazione

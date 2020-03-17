@@ -10,7 +10,7 @@ data primo_anno.dat;
 #data quarto_anno.dat;
 
 #caricamento del solver
-option solver minos;
+option solver cplex;
 
 #risoluzione
 solve;
@@ -26,6 +26,7 @@ display {i in varietà} : ((resa[i]) * (sum{j in terreni} x[i,j]));
 # display 'quantità di semi in Kg per ogni varietà seminati in ogni terreno';
 display x;
 
+# display 'numero di mq di terreno seminato per ogni varietà
 display t;
 
 # display '1 sse la varietà viene seminata in un determinato terreno';
