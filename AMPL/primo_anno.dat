@@ -36,17 +36,17 @@ param costo_semi := LIN 0.1
 			   		;
 
 #disponibilità massima di semi per ogni varietà
-param disponibilità_semi := LIN 1000
-			  		   		CARR 1000
-			  		  		BARZAN 1100
-			  		   		FELTRIN 900
+param disponibilità_semi := LIN 700
+			  		   		CARR 600
+			  		  		BARZAN 550
+			  		   		FELTRIN 400
 			  		   		;
 
 #dimensione in mq per ogni appezzamento di terreno
-param dimensione_terreni := A 500
+param dimensione_terreni := A 300
 							B 400
-							C 550
-							D 500
+							C 500
+							D 350
 							;
 			  	
 #ore necessarie a partire dal seme per avere il prodotto finito, per ogni varietà
@@ -65,10 +65,10 @@ param ore_dipendente := DIP1 2000
 						;
 
 #richiesta minima di radicchio per ogni varietà
-param richiesta := LIN 1000
-			  	   CARR 1000
-			  	   BARZAN 1000
-			  	   FELTRIN 1000
+param richiesta := LIN 600
+			  	   CARR 1500
+			  	   BARZAN 800
+			  	   FELTRIN 1600
 			  	   ;
 
 #salario in €/h uguale per ogni dipendente compreso di tassazione
