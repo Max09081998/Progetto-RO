@@ -24,7 +24,7 @@ param disponibilità_semi{varietà} >= 0;
 #dimensione in mq per ogni appezzamento di terreno
 param dimensione_terreni{terreni} >= 0;
 
-#ore necessarie a partire dal seme per avere il prodotto finito, per ogni varietà
+#ore necessarie per ogni varietà per ottenere il prodotto finito a partire dal seme
 param ore_varietà{varietà} >= 0 integer;
 
 #ore totali annue per ogni dipendente
