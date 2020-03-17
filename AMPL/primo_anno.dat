@@ -9,9 +9,9 @@ set dipendenti := DIP1 DIP2 DIP3 DIP4 DIP5;
 
 #resa per ogni di varietà di semente
 param resa := LIN 10
-			  CARR 15
+			  CARR 12
 			  BARZAN 13
-			  FELTRIN 18
+			  FELTRIN 15
 			  ;
 				
 #densità ottimale per ogni varietà di semi per mq
@@ -36,17 +36,17 @@ param costo := LIN 0.1
 			   ;
 
 #disponibilità massima di semi per ogni varietà
-param disponibilità := LIN 2000
-			  		   CARR 2000
-			  		   BARZAN 1900
-			  		   FELTRIN 1500
+param disponibilità := LIN 1000
+			  		   CARR 1000
+			  		   BARZAN 1100
+			  		   FELTRIN 900
 			  		   ;
 
 #dimensione in mq per ogni appezzamento di terreno
-param dimensione := A 300
+param dimensione := A 500
 					B 400
-					C 500
-					D 350
+					C 350
+					D 300
 					;
 
 #incremento in % dato dall'utilizzo di fertilizzante per ogni varietà
@@ -55,20 +55,27 @@ param incremento := LIN 0.1
 			  		BARZAN 0.08
 			  		FELTRIN 0.11
 			  		;
+			  	
+#TO FIX	
+param ore_varietà := LIN 3
+			  		 CARR 4
+			  		 BARZAN 5
+			  		 FELTRIN 7
+			  		 ;
 			  		
 #ore annue per ogni dipendente
 param ore_dipendente := DIP1 2000
-						DIP2 2000
+					    DIP2 2000
 						DIP3 2000
 						DIP4 2000
 						DIP5 2000
 						;
 
 #richiesta minima di radicchio per ogni varietà
-param richiesta := LIN 500
-			  	   CARR 700
-			  	   BARZAN 400
-			  	   FELTRIN 1000
+param richiesta := LIN 2000
+			  	   CARR 2000
+			  	   BARZAN 2000
+			  	   FELTRIN 2000
 			  	   ;
 
 #canone per l'utilizzo dell'acqua
@@ -95,8 +102,8 @@ param canone_manutenzione_extra := 500;
 #costo del fertilizzante
 param costo_fertilizzante := 100;
 
-#salario annuo uguale per ogni dipendente compreso di tassazione
-param salario_dipendente := 20000;
+#salario orario uguale per ogni dipendente compreso di tassazione #TO FIX
+param salario_dipendente := 5;
 
 #costo straordinaro per ogni dipendente
 param straordinario_dipendente := 1000;
