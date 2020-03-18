@@ -7,11 +7,11 @@ set dipendenti := DIP1 DIP2 DIP3 DIP4 DIP5;
 
 #valori dei parametri
 
-#resa per ogni di varietà di seme
-param resa := LIN 5
-			  CARR 7
-			  BARZAN 6
-			  FELTRIN 8
+#resa per ogni di varietà di semente
+param resa := LIN 8
+			  CARR 11
+			  BARZAN 12
+			  FELTRIN 14
 			  ;
 				
 #densità ottimale per ogni varietà di semi per mq
@@ -24,7 +24,7 @@ param densità := LIN 1
 #prezzo di vendita in €/Kg per ogni varietà di radicchio
 param prezzo_vendita := LIN 5
 			  			CARR 5.5
-			  			BARZAN 5
+			  			BARZAN 5.5
 			  			FELTRIN 6
 			  			;
 
@@ -32,7 +32,7 @@ param prezzo_vendita := LIN 5
 param costo_semi := LIN 0.1
 			   		CARR 0.12
 			  		BARZAN 0.14
-			  		FELTRIN 0.15
+			  		FELTRIN 0.16
 			   		;
 
 #disponibilità massima di semi per ogni varietà
@@ -43,13 +43,13 @@ param disponibilità_semi := LIN 700
 			  		   		;
 
 #dimensione in mq per ogni appezzamento di terreno
-param dimensione_terreni := A 350
-							B 450
+param dimensione_terreni := A 450
+							B 500
 							C 550
 							D 400
 							;
 			  	
-#ore necessarie a partire dal seme per avere il prodotto finito, per ogni varietà
+#ore necessarie a partire dal seme per avere il prodotto finale, per ogni varietà
 param ore_varietà := LIN 3
 			  		 CARR 4
 			  		 BARZAN 5
@@ -65,14 +65,14 @@ param ore_dipendente := DIP1 2000
 						;
 
 #richiesta minima di radicchio per ogni varietà
-param richiesta := LIN 600
-			  	   CARR 1500
-			  	   BARZAN 800
-			  	   FELTRIN 1600
+param richiesta := LIN 1600
+			  	   CARR 2500
+			  	   BARZAN 1800
+			  	   FELTRIN 3600
 			  	   ;
 
 #salario in €/h uguale per ogni dipendente compreso di tassazione
-param salario_dipendente := 5;
+param salario_dipendente := 7;
 
 #canone per l'utilizzo dell'acqua
 param canone_acqua := 500;
@@ -96,4 +96,4 @@ param ore_max_manutenzione := 8500;
 param canone_manutenzione_extra := 500;
 
 #costo fisso per l'utilizzo di prodotti chimici
-param costo_prodotti_chimici := 400;
+param costo_prodotti_chimici := 200;

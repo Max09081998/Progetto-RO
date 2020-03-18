@@ -1,4 +1,4 @@
-#dati del quarto anno
+#dati del primo anno
 
 #popolamento degli insiemi
 set varietà := LIN CARR BARZAN FELTRIN;
@@ -8,98 +8,92 @@ set dipendenti := DIP1 DIP2 DIP3 DIP4 DIP5;
 #valori dei parametri
 
 #resa per ogni di varietà di semente
-param resa := LIN
-			  CARR
-			  BARZAN
-			  FELTRIN
+param resa := LIN 8
+			  CARR 11
+			  BARZAN 12
+			  FELTRIN 14
 			  ;
 				
 #densità ottimale per ogni varietà di semi per mq
-param densità := LIN
-			  	 CARR
-			  	 BARZAN
-			  	 FELTRIN
+param densità := LIN 1
+			  	 CARR 1.2
+			  	 BARZAN 1.1
+			  	 FELTRIN 1.4
 			  	 ;
 
 #prezzo di vendita in €/Kg per ogni varietà di radicchio
-param prezzo := LIN
-			  	CARR
-			  	BARZAN
-			  	FELTRIN
-			  	;
+param prezzo_vendita := LIN 5
+			  			CARR 6
+			  			BARZAN 5.5
+			  			FELTRIN 6.5
+			  			;
 
 #costo in €/Kg per ogni varietà di semi acquistati
-param costo := LIN
-			   CARR
-			   BARZAN
-			   FELTRIN
-			   ;
+param costo_semi := LIN 0.1
+			   		CARR 0.12
+			  		BARZAN 0.14
+			  		FELTRIN 0.16
+			   		;
 
 #disponibilità massima di semi per ogni varietà
-param disponibilità := LIN
-			  		   CARR
-			  		   BARZAN
-			  		   FELTRIN
-			  		   ;
+param disponibilità_semi := LIN 700
+			  		   		CARR 600
+			  		  		BARZAN 550
+			  		   		FELTRIN 400
+			  		   		;
 
 #dimensione in mq per ogni appezzamento di terreno
-param dimensione := A
-					B
-					C
-					D
-					;
-
-#incremento in % dato dall'utilizzo di fertilizzante per ogni varietà
-param incremento := LIN
-			  		CARR
-			  		BARZAN
-			  		FELTRIN
-			  		;
+param dimensione_terreni := A 450
+							B 500
+							C 550
+							D 400
+							;
+			  	
+#ore necessarie a partire dal seme per avere il prodotto finale, per ogni varietà
+param ore_varietà := LIN 3
+			  		 CARR 4
+			  		 BARZAN 5
+			  		 FELTRIN 7
+			  		 ;
 			  		
 #ore annue per ogni dipendente
 param ore_dipendente := DIP1 2000
-						DIP2 2000
+					    DIP2 2000
 						DIP3 2000
 						DIP4 2000
 						DIP5 2000
 						;
 
 #richiesta minima di radicchio per ogni varietà
-param richiesta := LIN
-			  	   CARR
-			  	   BARZAN
-			  	   FELTRIN
+param richiesta := LIN 1600
+			  	   CARR 2500
+			  	   BARZAN 1800
+			  	   FELTRIN 3600
 			  	   ;
 
+#salario in €/h uguale per ogni dipendente compreso di tassazione
+param salario_dipendente := 7;
+
 #canone per l'utilizzo dell'acqua
-param canone_acqua := ;
+param canone_acqua := 500;
 
 #canone per l'utilizzo del gasolio
-param canone_gasolio := ;
+param canone_gasolio := 1000;
 
 #ore massime previste per la quantità di gasolio fornito
-param ore_max_gasolio := ;
+param ore_max_gasolio := 9500;
 
 #canone per l'utilizzo di gasolio extra
-param canone_gasolio_extra := ;
+param canone_gasolio_extra := 3000;
 
 #canone per la manutenzione dei macchinari
-param canone_manutenzione := ;
+param canone_manutenzione := 2000;
 
 #ore massime previste per rientrare nella manutenzione ordinaria
-param ore_max_manutenzione := ;
+param ore_max_manutenzione := 8500;
 
 #canone per la manutenzione extra dei macchinari
-param canone_manutenzione_extra := ;
+param canone_manutenzione_extra := 500;
 
-#costo del fertilizzante
-param costo_fertilizzante := ;
-
-#salario annuo uguale per ogni dipendente compreso di tassazione
-param salario_dipendente := ;
-
-#costo straordinaro per ogni dipendente
-param straordinario_dipendente := ;
-
-#ore straordinario uguali per ogni dipendente
-param ore_straordinario_dipendente := ;
+#costo fisso per l'utilizzo di prodotti chimici
+param costo_prodotti_chimici := 200;
