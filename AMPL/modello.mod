@@ -24,7 +24,7 @@ param disponibilità_semi{varietà} >= 0;
 #dimensione in mq per ogni appezzamento di terreno
 param dimensione_terreni{terreni} >= 0;
 
-#ore necessarie a partire dal seme per avere il prodotto finito, per ogni varietà
+#ore necessarie a partire dal seme per avere il prodotto finale, per ogni varietà
 param ore_varietà{varietà} >= 0 integer;
 
 #ore totali annue per ogni dipendente
@@ -112,7 +112,7 @@ s.t. vincolo_due_attivazione_y{i in varietà, j in terreni}: x[i,j] >= y[i,j];
 #numero massimo di semi distribuibili in ogni terreno, rispetto alla densità ottimale
 s.t. vincolo_massimo_semi{i in varietà, j in terreni}: x[i,j] = densità[i] * t[i,j];
 
-#estensione massima del terreno seminabile
+#estensione massima del terreno coltivabile
 s.t. vincolo_terreno_piantabile{j in terreni}: sum{i in varietà} t[i,j] <= dimensione_terreni[j];
 
 #numero massimo delle ore totali dei dipendenti
@@ -122,13 +122,13 @@ s.t. vincolo_massimo_ore_dipendenti: sum{i in varietà} (sum{j in terreni} x[i,j]
 s.t. vincolo_uno_attivazione_u: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] >= ore_max_gasolio * u;
 
 #attivazione variabile u seconda parte
-s.t. vincolo_due_attivazione_u: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] <= ore_max_gasolio * (1-u) + M * u; #TO FIX
+s.t. vincolo_due_attivazione_u: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] <= ore_max_gasolio * (1-u) + M * u;
 
 #attivazione variabile v prima parte
 s.t. vincolo_uno_attivazione_v: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] >= ore_max_manutenzione * v;
 
 #attivazione variabile v seconda parte
-s.t. vincolo_due_attivazione_v: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] <= ore_max_manutenzione * (1-v) + M * v; #TO FIX
+s.t. vincolo_due_attivazione_v: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] <= ore_max_manutenzione * (1-v) + M * v;
 
 #richiesta minima di radicchio per ogni varietà
 s.t. vincolo_richiesta_minima{i in varietà}: resa[i] * (sum{j in terreni} x[i,j]) >= richiesta[i];
