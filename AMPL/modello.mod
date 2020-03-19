@@ -30,7 +30,7 @@ param ore_varietà{varietà} >= 0 integer;
 #ore totali annue per ogni dipendente
 param ore_dipendente{dipendenti} >= 0 integer;
 
-#salario in €/h uguale per ogni dipendente compreso di tassazione
+#salario in €/h, uguale per ogni dipendente, comprensivo di tassazione
 param salario_dipendente >= 0;
 
 #richiesta minima di radicchio per ogni varietà
@@ -104,10 +104,10 @@ s.t. vincolo_disponibilità_max{i in varietà}: sum{j in terreni} x[i,j] <= dispon
 s.t. vincolo_limiti_semina{j in terreni}: y["LIN",j] + y["FELTRIN",j] <= 1;
 
 #attivazione della variabile y prima parte
-s.t. vincolo_uno_attivazione_y{i in varietà, j in terreni}: x[i,j] <= M * y[i,j];
+s.t. vincolo_I_attivazione_y{i in varietà, j in terreni}: x[i,j] <= M * y[i,j];
 
 #attivazione della variabile y seconda parte
-s.t. vincolo_due_attivazione_y{i in varietà, j in terreni}: x[i,j] >= y[i,j];
+s.t. vincolo_II_attivazione_y{i in varietà, j in terreni}: x[i,j] >= y[i,j];
 
 #numero massimo di semi distribuibili in ogni terreno, rispetto alla densità ottimale
 s.t. vincolo_massimo_semi{i in varietà, j in terreni}: x[i,j] = densità[i] * t[i,j];
@@ -119,16 +119,16 @@ s.t. vincolo_terreno_piantabile{j in terreni}: sum{i in varietà} t[i,j] <= dimen
 s.t. vincolo_massimo_ore_dipendenti: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] <= sum{k in dipendenti} ore_dipendente[k];
 
 #attivazione variabile u prima parte
-s.t. vincolo_uno_attivazione_u: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] >= ore_max_gasolio * u;
+s.t. vincolo_I_attivazione_u: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] >= ore_max_gasolio * u;
 
 #attivazione variabile u seconda parte
-s.t. vincolo_due_attivazione_u: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] <= ore_max_gasolio * (1-u) + M * u;
+s.t. vincolo_II_attivazione_u: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] <= ore_max_gasolio * (1-u) + M * u;
 
 #attivazione variabile v prima parte
-s.t. vincolo_uno_attivazione_v: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] >= ore_max_manutenzione * v;
+s.t. vincolo_I_attivazione_v: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] >= ore_max_manutenzione * v;
 
 #attivazione variabile v seconda parte
-s.t. vincolo_due_attivazione_v: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] <= ore_max_manutenzione * (1-v) + M * v;
+s.t. vincolo_II_attivazione_v: sum{i in varietà} (sum{j in terreni} x[i,j]) * ore_varietà[i] <= ore_max_manutenzione * (1-v) + M * v;
 
 #richiesta minima di radicchio per ogni varietà
 s.t. vincolo_richiesta_minima{i in varietà}: resa[i] * (sum{j in terreni} x[i,j]) >= richiesta[i];

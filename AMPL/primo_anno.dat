@@ -71,7 +71,7 @@ param richiesta := LIN 1600
 			  	   FELTRIN 3600
 			  	   ;
 
-#salario in €/h uguale per ogni dipendente compreso di tassazione
+#salario in €/h, uguale per ogni dipendente, comprensivo di tassazione
 param salario_dipendente := 7;
 
 #canone per l'utilizzo dell'acqua
